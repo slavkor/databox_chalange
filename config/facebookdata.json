@@ -1,0 +1,19 @@
+{
+  "app_id":"1049210122167042",
+  "app_secret":"07e0756579f4f842bf8aad3fefaea723",
+  "default_graph_version":"v8.0",
+  "access_token":"EAAO6QESgYwIBALeRhg7T81Q2umkD11AIAlYajeueaZAPjl0yjiHExkLyvlvE5ELZAOR5m9bRbqUt6FiVlcNZBOINQtWPVIZAiA8jUtYor2AZAnZCJf54t1ZCEBtMARtP5oHNT8Oj2N1TUId5orFT0NpjLpyfqZBeZAW0Mwy4ZCryJtJ9h6vLb1wUnu",
+  
+  "page_id": "1610672422394940",
+  "metrics": [
+    "page_views_total",
+    "page_engaged_users", 
+    "page_actions_post_reactions_like_total",
+    "page_total_actions",
+    "page_consumptions"
+  ],
+  
+  "databox_token":"3efs2gvnj6ktt7n3gh7xxr"
+
+}
+

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+  
+    <style type="text/css">
+
+    .full-height {
+      height: 100%;
+    }
+    </style>
+</head>
+<body>
+     <div>
+        <p>Facebook pageId: {{ page_id }}</p>
+        <p>Page metrics: {{ metrics }}</p>
+    </div>
+
+{# empty Twig template #}
+<form action='{{ url_for('fbaction') }}' id="postForm">
+    <input name='access_token' value='{{ access_token }}' type="hidden">
+    <input name='metrics' value='{{ metrics }}' type="hidden">
+    <input name='page_id' value='{{ page_id }}' type="text" placeholder='page_id'>
+    <br/>
+    <input name='databoxtoken' type='text' placeholder='databoxtoken'>
+    <br/>
+    <button type="submit" name="submit">Push metrics</button>
+    <br/>
+</form>
+
+<div>
+     <button onclick="setInterval(posttoserver,2000)">Periodical push</button> 
+</div>
+<div id="result" class="full-height"></div>
+ 
+<script>
+// post to server 
+$(document).ready(function(){
+  //$("#postForm").submit();
+  //setInterval(posttoserver,2000);
+}); 
+
+
+function posttoserver(){
+    $("#postForm").submit();
+}
+// Attach a submit handler to the form
+$( "#postForm" ).submit(function( event ) {
+  
+  // Stop form from submitting normally
+  event.preventDefault();
+ 
+  // Get some values from elements on the page:
+  var $form = $( this ),
+    access_token = $form.find( "input[name='access_token']" ).val(),
+    page_id = $form.find( "input[name='page_id']" ).val(), 
+    metrics = $form.find( "input[name='metrics']" ).val(), 
+    databoxtoken = $form.find( "input[name='databoxtoken']" ).val(), 
+    url = $form.attr( "action" );
+
+
+ if(databoxtoken !==''){
+ 
+    // Send the data using post
+    var posting = $.post( url, { access_token: access_token, page_id: page_id, metrics: metrics, databoxtoken: databoxtoken} );
+
+    // Put the results in a div
+    posting.done(function( data ) {
+
+      $( "#result" ).append(  "<p>" + data + "</p>");
+    }); 
+ }
+     
+
+});
+</script>
+ 
+</body>
+</html>
+

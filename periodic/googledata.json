@@ -1,0 +1,12 @@
+{
+  "view_id": "232438052",
+  "metrics": [
+    "ga:sessions",
+    "ga:users",
+    "ga:entrances",
+    "ga:pageviews",
+    "ga:bounces"
+  ],
+  
+  "databox_token":"fbvrfx5cnruy0yq34jmj8q"
+}
