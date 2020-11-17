@@ -48,7 +48,8 @@ class GoogleOauth2CallbackAction {
         $routeParser = RouteContext::fromRequest($request)->getRouteParser();
         
         $google = new Google_Client();
-        $google->setAuthConfig("C:\databox_chalange\config\google_client_secrets.json");
+        $google->setClientId('853566220918-6rf0l78i8lbvlfjkfbn4vl35fodsvmha.apps.googleusercontent.com');
+        $google->setClientSecret('tSytrr0xukjyTmHvfnVLE8wc');
         $google->setRedirectUri('https://'.$_SERVER['HTTP_HOST'].$routeParser->urlFor(GoogleOauth2CallbackAction::class));
         
         $code = $request->getQueryParams()['code'];
