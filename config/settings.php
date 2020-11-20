@@ -62,4 +62,21 @@ $settings['twig'] = [
     ],
 ];
 
+// google client settings
+$settings['google'] = [
+    'client_id' => '853566220918-6rf0l78i8lbvlfjkfbn4vl35fodsvmha.apps.googleusercontent.com',
+    'client_secret' => 'tSytrr0xukjyTmHvfnVLE8wc'
+];
+// facebook client settings
+$settings['facebook'] = [
+    'client_id' => '1049210122167042',
+    'client_secret' => '07e0756579f4f842bf8aad3fefaea723'
+];
+
+// databox  settings
+$settings['databox'] = [
+    'databoxtoken' => '1049210122167042'
+];
+
+
 return $settings;

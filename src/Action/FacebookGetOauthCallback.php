@@ -55,9 +55,8 @@ class FacebookGetOauthCallback {
             'default_graph_version' => 'v8.0'
             ]);
 
-
         $helper = $fb->getRedirectLoginHelper();
-       
+        
         try {
             $accessToken = $helper->getAccessToken();
           } catch(Facebook\Exception\ResponseException $e) {
@@ -88,9 +87,7 @@ class FacebookGetOauthCallback {
         $tokenMetadata = $oAuth2Client->debugToken($accessToken);
         $tokenMetadata->validateAppId('1049210122167042');
         $tokenMetadata->validateExpiration();
-        
 
-    
         if (!$accessToken->isLongLived()) {          
           // Exchanges a short-lived access token for a long-lived one
           try {
@@ -99,7 +96,7 @@ class FacebookGetOauthCallback {
             echo "<p>Error getting long-lived access token: " . $e->getMessage() . "</p>\n\n";
             exit;
           }
-    }
+        }
         
         $fb_response = $fb->get('/me/accounts?fields=access_token', $accessToken->getValue());
 
@@ -110,6 +107,7 @@ class FacebookGetOauthCallback {
             fwrite($myfile, $json);
             fclose($myfile); 
         $page = $data['data'][0];
+        
         if(isset($page))
         {
             $this->session->set('access_token', $page['access_token']);

@@ -11,7 +11,7 @@ use Psr\Log\LoggerInterface;
 use App\Domain\Databox\DataboxPush;
 use App\Domain\Facebook\FacebookMetrics;
 use App\Domain\Google\GoogleMetrics;
-use App\Domain\Repo\Tokens;
+use App\Domain\Repository\Tokens;
 
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -21,9 +21,13 @@ use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
 
 
+
 return [
     'settings' => function () {
         return require __DIR__ . '/settings.php';
+    },
+    'google_client' => function(ContainerInterface $containe){
+        
     },
     LoggerInterface::class => function (ContainerInterface $container) {
         $settings = $container->get('settings')['logger'];

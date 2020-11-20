@@ -49,6 +49,4 @@ class BasePush implements \JsonSerializable {
     public function jsonSerialize() {
         return ["pushkey" => $this->pushkey, "metrics" => $this->metrics];
     }
-    
-
 }

@@ -7,14 +7,16 @@ use App\Action\FacebookGetOauthCallback;
 use App\Action\FacebookAction;
 use App\Action\GoogleAction;
 use App\Action\GoogleOauth2CallbackAction;
-
+use App\Action\LoginAction;
+use App\Action\PushAction;
 return function (App $app) {
     
     $app->get('/info', function($app){ phpinfo(); });
     
         $app->group('/databox', function($app){
             $app->get('/', HomeAction::class)->setName(HomeAction::class);
-            $app->get('/facebook', HomeAction::class)->setName(HomeAction::class);
+            $app->get('/login', LoginAction::class)->setName(LoginAction::class);
+            $app->map(['GET', 'POST'], '/push', PushAction::class)->setName(PushAction::class)->add(DataboxPush::class);
         });
    
         $app->group('/fb', function($app){

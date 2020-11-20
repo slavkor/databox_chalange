@@ -79,9 +79,7 @@ final class GoogleMetrics {
         $body = new Google_Service_AnalyticsReporting_GetReportsRequest();
         $body->setReportRequests( array( $request) );
         $reports = $analytics->reports->batchGet( $body );  
-        
-
-        
+      
         //prepare the responses for DataboxPush middleware
         for ( $reportIndex = 0; $reportIndex < count( $reports ); $reportIndex++ ) {
             $report = $reports[ $reportIndex ];

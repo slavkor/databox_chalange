@@ -1,5 +1,5 @@
 <?php
-namespace App\Domain\Repo;
+namespace App\Domain\Repository;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,12 +12,19 @@ namespace App\Domain\Repo;
  * @author Slavko
  */
 class Tokens {
+    
+    private $settings;
+    public function __construct() {
+        
+    }
+    
     public function SaveToken($id, $value){
         $myfile = fopen($this->settings['config'].'/'.$id, "w");
         fwrite($myfile, $value);
         fclose($myfile); 
         return $value;
     }
+    
     public function FetchToken($id) {
         try {
             $myfile = fopen($this->settings['config'].'/'.$id, "r");

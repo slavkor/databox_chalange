@@ -14,9 +14,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Log\LoggerInterface;
 use App\Domain\Facebook\FacebookMetrics;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Slim\Routing\RouteContext;
-use App\Action\FacebookGetOauthCallback;
-use Facebook\Facebook;
 use Slim\Views\Twig;
 
 /**
@@ -52,7 +49,6 @@ class FacebookAction {
                 return $this->twig->render($response, 'fbpost.twig', [ 'access_token' => $this->session->get('access_token'), 
                 'page_id'=>  $this->session->get('page_id'), 
                 'metrics'=> 'page_views_total,page_engaged_users,page_actions_post_reactions_like_total,page_total_actions,page_consumptions' ]);
-                
             case 'POST';
                 $data = $this->facebook->GetPageMetrics($request->getParsedBody(), $this->session->get('access_token'));
                 return $response->withJson(json_encode($data));
@@ -60,7 +56,5 @@ class FacebookAction {
             default:
                 break;
         }
-        
-
     }
 }

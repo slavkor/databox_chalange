@@ -55,7 +55,6 @@ class GoogleOauth2CallbackAction {
         $code = $request->getQueryParams()['code'];
         
         if(isset($code)){
-        
             $token = $google->fetchAccessTokenWithAuthCode($code);
             if(!isset($token['error'])){
                 $this->session->set('access_token', $token['access_token']);
@@ -64,7 +63,6 @@ class GoogleOauth2CallbackAction {
             else {
                return  $response->withStatus(307)->withHeader('Location', $routeParser->urlFor(HomeAction::class));  
             }
-
         }
         else{
             return  $response->withStatus(307)->withHeader('Location', $routeParser->urlFor(HomeAction::class));

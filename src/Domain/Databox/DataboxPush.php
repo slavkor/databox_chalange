@@ -47,10 +47,9 @@ final class DataboxPush {
         
         //get data from source 
         $response = $handler->handle($request);
-        if($request->getMethod == 'GET'){
+        if($request->getMethod() == 'GET'){
             return $response;
         }
-        
         
         if ($response->getStatusCode() != 200) {
             return $response;
